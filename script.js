@@ -86,10 +86,12 @@ const gameController = (() => {
             if (checkWin(getCurrentToken())) {
                 displayController.toggleResetBtn();
                 displayController.displayMessage(`Player ${getCurrentToken().toUpperCase()} wins!`);
+                squares.forEach(square => square.removeEventListener('click', gameController.playTurn));
 
             } else if (gameBoard.currentBoard.every((boardIndex) => boardIndex != '')){
                 displayController.toggleResetBtn();
                 displayController.displayMessage(`It's a draw`);
+                squares.forEach(square => square.removeEventListener('click', gameController.playTurn));
             } else {
                 turn ++;
             }  
@@ -103,6 +105,7 @@ const gameController = (() => {
         displayController.displayBoard();
         displayController.toggleResetBtn();
         turn = 1;
+        squares.forEach(square => square.addEventListener('click', gameController.playTurn));
     }
 
 
