@@ -1,0 +1,73 @@
+ * {
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+ }
+
+ h1 {
+     margin: auto;
+     text-align: center;
+ }
+
+ .wrapper {
+     display: flex;
+     padding-top: 5px;
+     justify-content: center;
+ }
+
+
+ .board-container {
+     margin: 0 auto;
+     display: grid;
+     width: 400px;
+     height: 400px;
+     background-color: lightblue;
+     grid-template-columns: repeat(3, 1fr);
+     grid-template-rows: repeat(3, 1fr);
+ }
+
+ #one, #two, #four, #five {
+     border-right: 1px solid black;
+     border-bottom: 1px solid black;
+ }
+
+ #three, #six {
+     border-bottom: 1px solid black;
+ }
+
+ #seven, #eight {
+     border-right: 1px solid black;
+ }
+
+ .square {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 35px;
+    cursor: pointer;
+ }
+
+ .button-div {
+     display: flex;
+     justify-content: center;
+     margin: 5px;
+ }
+
+ button {
+     margin: 5px;
+     padding: 2px;
+ }
+
+ #game-message > p {
+     text-align: center;
+ }
+
+ #reset-div {
+     height: 30px;
+     display: flex;
+     justify-content: center;
+ }
+
+ .visible {
+     display: none;
+ }
