@@ -3,12 +3,19 @@ const displayButton = document.querySelector('.display');
 const playerButtons = document.querySelectorAll('.player');
 const gameMessage = document.getElementById('game-message');
 const resetBtn = document.getElementById('reset-btn');
+const nameDiv = document.querySelector('.player-names');
+const submitBtn = document.querySelector('input[type="submit"');
+//const resetDiv = document.querySelector('#reset-div > div');
+//const inputOne = document.getElementById('input-1');
+//const inputTwo = document.getElementById('input-2');
 
-const Player = (token) => {
+const Player = (token) => { // consider adding name as an arg
     this.token = token;
+
     const getToken = () => {
         return token;
     }
+
     return {
         getToken
     }
@@ -82,7 +89,7 @@ const gameController = (() => {
     const playTurn = (e) => {
         if (gameBoard.getMark(e.target.dataset.grid) === '') {
             gameBoard.setMark(getCurrentToken(), e.target.dataset.grid);
-            displayController.displayBoard();
+            displayController.displaySquare(e.target.dataset.grid);
             if (checkWin(getCurrentToken())) {
                 displayController.toggleResetBtn();
                 displayController.displayMessage(`Player ${getCurrentToken().toUpperCase()} wins!`);
@@ -123,6 +130,10 @@ const displayController = (() => {
         });
     }
 
+    const displaySquare = (index) => {
+        squares[index].textContent = gameBoard.currentBoard[index];
+    }
+
     const displayMessage = (message) => {
         let messageP = document.createElement('p');
         messageP.textContent = message;
@@ -139,10 +150,12 @@ const displayController = (() => {
 
     return {
         displayBoard,
+        displaySquare,
         displayMessage,
         toggleResetBtn
     }
 })();
+
 
 //displayButton.addEventListener('click', displayController.displayBoard);
 squares.forEach(square => square.addEventListener('click', gameController.playTurn));
@@ -158,4 +171,11 @@ two options: player vs. player or player vs. cpu
 (4) set player 2 to turn = false. All even turns will be player 2
 
 
+*/
+
+/*
+Enhancements:
+(1) When user clicks human, display two input boxes for player names
+(2) When user starts game (new button), establish players with corresponding names to display when someone wins
+(3) Create fallbacks for no names entered (player x, player o)
 */
