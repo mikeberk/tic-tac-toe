@@ -3,8 +3,11 @@ const displayButton = document.querySelector('.display');
 const playerButtons = document.querySelectorAll('.player');
 const gameMessage = document.getElementById('game-message');
 const resetBtn = document.getElementById('reset-btn');
+const resetPlayersBtn = document.getElementById('reset-players');
 const nameDiv = document.querySelector('.player-names');
-const submitBtn = document.querySelector('input[type="submit"');
+const submitBtn = document.querySelector('button[type="submit"');
+const playerOneText = document.querySelector('.player-one-name');
+const playerTwoText = document.querySelector('.player-two-name');
 //const resetDiv = document.querySelector('#reset-div > div');
 //const inputOne = document.getElementById('input-1');
 //const inputTwo = document.getElementById('input-2');
@@ -142,6 +145,23 @@ const displayController = (() => {
 
     const toggleResetBtn = () => {
         resetBtn.classList.toggle('visible');
+        resetPlayersBtn.classList.toggle('visible');
+    }
+
+    const displayPlayers = (e) => {
+        e.preventDefault()
+        let inputOne = document.getElementById('input-1').value;
+        let inputTwo = document.getElementById('input-2').value;
+        playerOneText.textContent = inputOne;
+        playerTwoText.textContent = inputTwo;
+        document.querySelector('form').reset();
+        nameDiv.classList.toggle('visible');
+        
+    }
+
+    const resetPlayers = () => {
+        gameController.newGame();
+        nameDiv.classList.toggle('visible');
     }
 
     /*const updateTurn = () => {
@@ -152,7 +172,9 @@ const displayController = (() => {
         displayBoard,
         displaySquare,
         displayMessage,
-        toggleResetBtn
+        toggleResetBtn,
+        displayPlayers,
+        resetPlayers
     }
 })();
 
@@ -161,6 +183,8 @@ const displayController = (() => {
 squares.forEach(square => square.addEventListener('click', gameController.playTurn));
 //playerButtons.forEach(btn => btn.addEventListener('click', gameController.createPlayer));
 resetBtn.addEventListener('click', gameController.newGame);
+submitBtn.addEventListener('click', displayController.displayPlayers);
+resetPlayersBtn.addEventListener('click', displayController.resetPlayers);
 
 
 /* 

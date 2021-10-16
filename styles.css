@@ -97,29 +97,26 @@ button {
 }
 
 form {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 5px;
-}
-/*
-label[for="input-1"] {
-    grid-row: 1;
+    display: flex;
+    flex-direction: column;
 }
 
-label[for="input-2"] {
-    grid-row: 1;
+.form-players {
+    display: flex;
 }
 
-input[name="input-1"] {
-    grid-row: 2;
+.form-players div {
+    display: flex;
+    flex-direction: column;
+    padding: 8px;
 }
 
-input[name="input-2"] {
-    grid-row: 2;
+form button[type="submit"] {
+    align-self: center;
 }
-*/
-input[type="submit"] {
-    grid-column: 1 / 3;
+
+label[for="input-1"], label[for="input-2"] {
+    padding-bottom: 8px;
 }
 
 .visible {
