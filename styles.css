@@ -18,7 +18,11 @@ h1 {
 .game-container {
     display: flex;
     justify-content: center;
-    align-items: baseline;
+    align-items: flex-start;
+}
+
+.player-name {
+    margin-top: 60px;
 }
 
 h2 {
